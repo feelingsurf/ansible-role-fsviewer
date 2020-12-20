@@ -1,0 +1,2 @@
+---
+fsviewer_deb_package: https://github.com/feelingsurf/viewer/releases/download/v{{ fsviewer_version }}/FeelingSurfViewer-linux-amd64-{{ fsviewer_version }}.deb

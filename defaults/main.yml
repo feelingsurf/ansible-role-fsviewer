@@ -1,0 +1,19 @@
+---
+fsviewer_dependencies:
+  - libgbm1
+  - libasound2
+  - libgtk-3-0
+  - libnss3
+
+fsviewer_version: 1.5.0
+
+fsviewer_user: fsviewer
+fsviewer_group: fsviewer
+
+fsviewer_extra_groups: []
+
+fsviewer_home_dir: /home/{{ fsviewer_user }}
+
+fsviewer_env: []
+#  - access_token: abcdef0123
+#  - DISPLAY=:1

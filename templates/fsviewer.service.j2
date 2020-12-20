@@ -1,0 +1,17 @@
+[Unit]
+Description=Control the status of FeelingSurfViewer
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User={{ fsviewer_user }}
+Group={{ fsviewer_group }}
+WorkingDirectory={{ fsviewer_home_dir }}
+{% for item in fsviewer_env %}
+Environment={{ item }}
+{% endfor %}
+
+ExecStart=/opt/FeelingSurfViewer/FeelingSurfViewer
+
+[Install]
+WantedBy=multi-user.target

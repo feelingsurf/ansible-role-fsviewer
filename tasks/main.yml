@@ -1,0 +1,52 @@
+---
+- name: Ensure fsviewer group exists
+  group:
+    name: "{{ fsviewer_group }}"
+    state: present
+
+- name: Ensure fsviewer user exists
+  user:
+    append: "{{ true if fsviewer_extra_groups | length > 0 else false }}"
+    group: "{{ fsviewer_user }}"
+    groups: "{{ fsviewer_extra_groups }}"
+    home: "{{ fsviewer_home_dir }}"
+    name: "{{ fsviewer_group }}"
+    shell: /bin/bash
+    state: present
+  when: fsviewer_group != 'root'
+
+- name: Ensure dependencies are installed
+  apt:
+    name: "{{ fsviewer_dependencies }}"
+    state: present
+    update_cache: true
+
+- name: Check if FeelingSurfViewer is already installed
+  package_facts:
+
+- name: Install FeelingSurfViewer
+  apt:
+    deb: "{{ fsviewer_deb_package }}"
+    state: present
+  when: "'feelingsurfviewer' not in ansible_facts.packages or ansible_facts.packages.feelingsurfviewer[0].version is version(fsviewer_version, '!=')"
+  notify: Restart FeelingSurfViewer
+
+- name: Ensure systemd service file is installed
+  template:
+    dest: /etc/systemd/system/fsviewer.service
+    group: root
+    mode: 0755
+    owner: root
+    src: fsviewer.service.j2
+  register: _systemd
+
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: true
+  when: _systemd is changed
+
+- name: Ensure FeelingSurfViewer starts on boot and is in the correct state
+  service:
+    enabled: true
+    name: fsviewer
+    state: started

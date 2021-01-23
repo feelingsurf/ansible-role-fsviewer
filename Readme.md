@@ -32,6 +32,7 @@ Role Variables
 | fsviewer_extra_groups       | yes      | `[]`                        | list      |                              |
 | fsviewer_home_dir           | yes      | `/home/{{ fsviewer_user }}` | string    |                              |
 | fsviewer_env                | yes      | `[]`                        | list      | List of additional env vars. |
+| fsviewer_options            | yes      | `[]`                        | list      | List of cli options.         |
 
 Dependencies
 ------------
@@ -45,7 +46,7 @@ Example Playbook
       roles:
         - ansible-role-fsviewer
           fsviewer_env:
-            - access_token: abcdef0123
+            - access_token=abcdef0123
 
 Testing
 -------

@@ -2,16 +2,25 @@
 Description=Control the status of FeelingSurfViewer
 After=syslog.target network.target
 
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
 [Service]
 Type=simple
 User={{ fsviewer_user }}
 Group={{ fsviewer_group }}
 WorkingDirectory={{ fsviewer_home_dir }}
 {% for item in fsviewer_env %}
-Environment={{ item }}
+Environment="{{ item }}"
 {% endfor %}
 
-ExecStart=/opt/FeelingSurfViewer/FeelingSurfViewer
+ExecStart=/opt/FeelingSurfViewer/FeelingSurfViewer {{ fsviewer_options | join(' ') }}
+
+KillMode=mixed
+TimeoutStopSec=10
+
+Restart=on-failure
+RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target

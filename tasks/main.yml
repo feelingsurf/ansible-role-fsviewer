@@ -39,6 +39,7 @@
     owner: root
     src: fsviewer.service.j2
   register: _systemd
+  notify: Restart FeelingSurfViewer
 
 - name: Reload systemd daemon
   systemd:

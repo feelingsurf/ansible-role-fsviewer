@@ -15,5 +15,9 @@ fsviewer_extra_groups: []
 fsviewer_home_dir: /home/{{ fsviewer_user }}
 
 fsviewer_env: []
-#  - access_token: abcdef0123
+#  - access_token=abcdef0123
 #  - DISPLAY=:1
+
+fsviewer_options: []
+#  - --no-sandbox
+#  - --disable-gpu

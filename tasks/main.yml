@@ -35,7 +35,7 @@
   template:
     dest: /etc/systemd/system/fsviewer.service
     group: root
-    mode: 0755
+    mode: 0750
     owner: root
     src: fsviewer.service.j2
   register: _systemd

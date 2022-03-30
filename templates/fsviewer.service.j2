@@ -19,7 +19,7 @@ ExecStart=/opt/FeelingSurfViewer/FeelingSurfViewer {{ fsviewer_options | join(' 
 KillMode=mixed
 TimeoutStopSec=10
 
-Restart=on-failure
+Restart=always
 RestartSec=5s
 
 [Install]

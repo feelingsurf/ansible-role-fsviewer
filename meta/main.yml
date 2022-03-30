@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: fsviewer
+  namespace: feelingsurf
   author: FeelingSurf
   description: Install FeelingSurfViewer.
   license: MIT

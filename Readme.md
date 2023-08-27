@@ -26,7 +26,7 @@ Role Variables
 | Variable                    | Required | Default                     | Choices   | Comments                     |
 |-----------------------------|----------|-----------------------------|-----------|------------------------------|
 | fsviewer_dependencies       | yes      |                             | list      | See `defaults/main.yml`.     |
-| fsviewer_version            | yes      | `2.1.0`                     | string    |                              |
+| fsviewer_version            | yes      | `2.3.1`                     | string    |                              |
 | fsviewer_user               | yes      | `fsviewer`                  | string    | User to run the app as.      |
 | fsviewer_group              | yes      | `fsviewer`                  | string    | Group to run the app as.     |
 | fsviewer_extra_groups       | yes      | `[]`                        | list      |                              |

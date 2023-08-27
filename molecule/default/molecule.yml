@@ -1,22 +1,12 @@
 ---
 dependency:
   name: galaxy
-  enabled: False
+  enabled: false
 
 driver:
   name: docker
 
 platforms:
-  - name: ansible-role-fsviewer-debian-10
-    image: debian:10
-    command: /lib/systemd/systemd
-    tmpfs:
-      - /run
-      - /run/lock
-    capabilities:
-      - SYS_ADMIN
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: ansible-role-fsviewer-debian-11
     image: debian:11
     command: /lib/systemd/systemd
@@ -27,8 +17,8 @@ platforms:
       - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: ansible-role-fsviewer-ubuntu-1804
-    image: ubuntu:18.04
+  - name: ansible-role-fsviewer-debian-12
+    image: debian:12
     command: /lib/systemd/systemd
     tmpfs:
       - /run
@@ -47,11 +37,16 @@ platforms:
       - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-
-lint: |
-    yamllint .
-    ansible-lint
-    flake8
+  - name: ansible-role-fsviewer-ubuntu-2204
+    image: ubuntu:22.04
+    command: /lib/systemd/systemd
+    tmpfs:
+      - /run
+      - /run/lock
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
 provisioner:
   name: ansible

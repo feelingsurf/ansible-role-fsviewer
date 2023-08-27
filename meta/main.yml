@@ -5,7 +5,7 @@ galaxy_info:
   author: FeelingSurf
   description: Install FeelingSurfViewer.
   license: MIT
-  min_ansible_version: 2.7
+  min_ansible_version: "2.10"
   platforms:
     - name: Ubuntu
       versions:
@@ -13,8 +13,8 @@ galaxy_info:
         - focal
     - name: Debian
       versions:
+        - bookworm
         - bullseye
-        - buster
   galaxy_tags:
     - feelingsurf
     - feelingsurfviewer

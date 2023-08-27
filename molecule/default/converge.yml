@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   roles:
-    - role: ansible-role-fsviewer
+    - role: feelingsurf.fsviewer
       fsviewer_env:
         - "DISPLAY=:99"

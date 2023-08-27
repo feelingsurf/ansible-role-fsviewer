@@ -4,11 +4,11 @@
 
   tasks:
     - name: Ensure xvfb is installed
-      apt:
+      ansible.builtin.apt:
         name: xvfb
         state: present
         update_cache: true
 
     - name: Ensure xfvb is running
-      shell: /usr/bin/Xvfb :99 -screen 0 1920x1080x24 -nolisten unix &
+      ansible.builtin.shell: /usr/bin/Xvfb :99 -screen 0 1920x1080x24 -nolisten unix &
       changed_when: false

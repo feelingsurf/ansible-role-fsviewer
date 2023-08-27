@@ -27,6 +27,7 @@ Role Variables
 |-----------------------------|----------|-----------------------------|-----------|------------------------------|
 | fsviewer_dependencies       | yes      |                             | list      | See `defaults/main.yml`.     |
 | fsviewer_version            | yes      | `2.3.1`                     | string    |                              |
+| fsviewer_arch               | yes      | automatically selected      | string    |                              |
 | fsviewer_user               | yes      | `fsviewer`                  | string    | User to run the app as.      |
 | fsviewer_group              | yes      | `fsviewer`                  | string    | Group to run the app as.     |
 | fsviewer_extra_groups       | yes      | `[]`                        | list      |                              |

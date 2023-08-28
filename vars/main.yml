@@ -1,6 +1,6 @@
 ---
-fsviewer_deb_package: https://github.com/feelingsurf/viewer/releases/download/
-  {{ fsviewer_version }}/FeelingSurfViewer-linux-{{ fsviewer_arch }}-{{ fsviewer_version }}.deb
+fsviewer_deb_package: "https://github.com/feelingsurf/viewer/releases/download/{{ fsviewer_version }}/\
+  FeelingSurfViewer-linux-{{ fsviewer_arch }}-{{ fsviewer_version }}.deb"
 
 fsviewer_arch_map:
   32-bit: "386"

@@ -2,13 +2,29 @@
 - name: Prepare
   hosts: all
 
+  handlers:
+    - name: Reload systemd daemon
+      ansible.builtin.systemd:
+        daemon_reload: true
+
   tasks:
-    - name: Ensure xvfb is installed
-      apt:
+    - name: Ensure Xvfb is installed
+      ansible.builtin.apt:
         name: xvfb
         state: present
         update_cache: true
 
-    - name: Ensure xfvb is running
-      shell: /usr/bin/Xvfb :99 -screen 0 1920x1080x24 -nolisten unix &
+    - name: Ensure Xvfb systemd file exists
+      ansible.builtin.template:
+        dest: "/etc/systemd/system/xvfb.service"
+        group: root
+        mode: "0644"
+        owner: root
+        src: "templates/xvfb.service.j2"
+      notify: Reload systemd daemon
+
+    - name: Ensure Xvfb is running
+      ansible.builtin.service:
+        name: xvfb
+        state: started
       changed_when: false

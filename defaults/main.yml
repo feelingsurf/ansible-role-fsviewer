@@ -5,7 +5,9 @@ fsviewer_dependencies:
   - libgtk-3-0
   - libnss3
 
-fsviewer_version: 2.1.0
+fsviewer_version: 2.3.1
+
+fsviewer_arch: "{{ fsviewer_arch_map[ansible_architecture] }}"
 
 fsviewer_user: fsviewer
 fsviewer_group: fsviewer

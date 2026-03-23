@@ -1,6 +1,7 @@
 ---
 - name: Prepare
   hosts: all
+  become: true
 
   handlers:
     - name: Reload systemd daemon
@@ -27,4 +28,3 @@
       ansible.builtin.service:
         name: xvfb
         state: started
-      changed_when: false

@@ -10,15 +10,15 @@ This role installs [FeelingSurfViewer](https://github.com/feelingsurf/viewer).
 Requirements
 ------------
 
-Ansible 2.7 or newer.
+Ansible 2.10 or newer.
 
 Supported Platforms
 -------------------
 
-- [Debian - 10 (Buster)](https://wiki.debian.org/DebianBuster)
-- [Debian - 11 (Bullseye)](https://wiki.debian.org/DebianBullseye)
-- [Ubuntu - 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/)
-- [Ubuntu - 20.04 (Focal Fossa)](http://releases.ubuntu.com/20.04/)
+- [Debian - 12 (Bookworm)](https://wiki.debian.org/DebianBookworm)
+- [Debian - 13 (Trixie)](https://wiki.debian.org/DebianTrixie)
+- [Ubuntu - 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/22.04/)
+- [Ubuntu - 24.04 (Noble Numbat)](http://releases.ubuntu.com/24.04/)
 
 Role Variables
 --------------
@@ -26,7 +26,7 @@ Role Variables
 | Variable                    | Required | Default                     | Choices   | Comments                     |
 |-----------------------------|----------|-----------------------------|-----------|------------------------------|
 | fsviewer_dependencies       | yes      |                             | list      | See `defaults/main.yml`.     |
-| fsviewer_version            | yes      | `2.3.2`                     | string    |                              |
+| fsviewer_version            | yes      | `2.5.1`                     | string    |                              |
 | fsviewer_arch               | yes      | automatically selected      | string    |                              |
 | fsviewer_user               | yes      | `fsviewer`                  | string    | User to run the app as.      |
 | fsviewer_group              | yes      | `fsviewer`                  | string    | Group to run the app as.     |

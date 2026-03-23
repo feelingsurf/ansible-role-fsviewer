@@ -5,3 +5,5 @@
     - role: feelingsurf.fsviewer
       fsviewer_env:
         - "DISPLAY=:99"
+      fsviewer_options:
+        - "--no-sandbox"

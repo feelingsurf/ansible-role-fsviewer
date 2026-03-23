@@ -14,7 +14,7 @@ WorkingDirectory={{ fsviewer_home_dir }}
 Environment="{{ item }}"
 {% endfor %}
 
-ExecStart=/opt/FeelingSurfViewer/FeelingSurfViewer {{ fsviewer_options | join(' ') }}
+ExecStart=/opt/FeelingSurfViewer/FeelingSurfViewer {{ fsviewer_options | join(' ') | trim }}
 
 KillMode=mixed
 TimeoutStopSec=10

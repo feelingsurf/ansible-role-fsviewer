@@ -1,4 +1,13 @@
 ---
+- name: Include OS-specific variables
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_facts['distribution'] }}_{{ ansible_facts['distribution_major_version'] }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
+      skip: true
+
 - name: Ensure fsviewer group exists
   ansible.builtin.group:
     name: "{{ fsviewer_group }}"
@@ -6,11 +15,11 @@
 
 - name: Ensure fsviewer user exists
   ansible.builtin.user:
-    append: "{{ true if fsviewer_extra_groups | length > 0 else false }}"
-    group: "{{ fsviewer_user }}"
+    append: "{{ fsviewer_extra_groups | length > 0 }}"
+    group: "{{ fsviewer_group }}"
     groups: "{{ fsviewer_extra_groups }}"
     home: "{{ fsviewer_home_dir }}"
-    name: "{{ fsviewer_group }}"
+    name: "{{ fsviewer_user }}"
     shell: /bin/bash
     state: present
   when: fsviewer_group != 'root'
@@ -28,7 +37,9 @@
   ansible.builtin.apt:
     deb: "{{ fsviewer_deb_package }}"
     state: present
-  when: "'feelingsurfviewer' not in ansible_facts.packages or ansible_facts.packages.feelingsurfviewer[0].version is version(fsviewer_version, '!=')"
+  when: >
+    'feelingsurfviewer' not in ansible_facts.packages or
+    ansible_facts.packages.feelingsurfviewer[0].version is version(fsviewer_version, '!=')
   notify: Restart FeelingSurfViewer
 
 - name: Ensure systemd service file is installed

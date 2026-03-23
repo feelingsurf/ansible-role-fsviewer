@@ -1,46 +1,31 @@
-import pytest
-
-import os
-
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ["MOLECULE_INVENTORY_FILE"]
-).get_hosts("all")
+def test_fsviewer_group_exists(host):
+    group = host.group("fsviewer")
+    assert group.exists
 
 
-@pytest.mark.parametrize(
-    "name",
-    [
-        ("feelingsurfviewer"),
-    ],
-)
-def test_packages_are_installed(host, name):
-    package = host.package(name)
+def test_fsviewer_user_exists(host):
+    user = host.user("fsviewer")
+    assert user.exists
+    assert user.group == "fsviewer"
+    assert user.shell == "/bin/bash"
+
+
+def test_feelingsurfviewer_package_is_installed(host):
+    package = host.package("feelingsurfviewer")
     assert package.is_installed
+    assert package.version == "2.5.1"
 
 
-@pytest.mark.parametrize(
-    "username,groupname,path",
-    [
-        ("root", "root", "/etc/systemd/system/fsviewer.service"),
-    ],
-)
-def test_systemd_config_file_exists(host, username, groupname, path):
-    config = host.file(path)
+def test_systemd_service_file_exists(host):
+    config = host.file("/etc/systemd/system/fsviewer.service")
     assert config.exists
     assert config.is_file
-    assert config.user == username
-    assert config.group == groupname
+    assert config.user == "root"
+    assert config.group == "root"
+    assert config.mode == 0o644
 
 
-@pytest.mark.parametrize(
-    "name",
-    [
-        ("fsviewer"),
-    ],
-)
-def test_fsviewer_service_is_running(host, name):
-    service = host.service(name)
+def test_fsviewer_service_is_running(host):
+    service = host.service("fsviewer")
     assert service.is_enabled
     assert service.is_running

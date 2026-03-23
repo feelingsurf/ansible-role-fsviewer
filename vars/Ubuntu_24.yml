@@ -1,0 +1,10 @@
+---
+fsviewer_dependencies:
+  - libasound2t64
+  - libgbm1
+  - libgtk-3-0t64
+  - libnotify4
+  - libnss3
+  - libsecret-1-0
+  - libxss1
+  - libxtst6

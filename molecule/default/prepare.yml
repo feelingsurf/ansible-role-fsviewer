@@ -27,4 +27,3 @@
       ansible.builtin.service:
         name: xvfb
         state: started
-      changed_when: false

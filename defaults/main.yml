@@ -1,5 +1,5 @@
 ---
-fsviewer_version: 2.5.1
+fsviewer_version: 2.6.0
 
 fsviewer_arch: "{{ fsviewer_arch_map[ansible_architecture] }}"
 

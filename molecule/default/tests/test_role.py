@@ -13,7 +13,7 @@ def test_fsviewer_user_exists(host):
 def test_feelingsurfviewer_package_is_installed(host):
     package = host.package("feelingsurfviewer")
     assert package.is_installed
-    assert package.version == "2.5.1"
+    assert package.version == "2.6.0"
 
 
 def test_systemd_service_file_exists(host):

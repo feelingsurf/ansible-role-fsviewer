@@ -1,4 +1,4 @@
-[![tests](https://github.com/feelingsurf/ansible-role-fsviewer/workflows/Test%20ansible%20role/badge.svg)](https://github.com/feelingsurf/ansible-role-fsviewer/actions?query=workflow%3A%22Test+ansible+role%22)
+[![CI](https://github.com/feelingsurf/ansible-role-fsviewer/actions/workflows/ci.yml/badge.svg)](https://github.com/feelingsurf/ansible-role-fsviewer/actions/workflows/ci.yml)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-feelingsurf.fsviewer-blue.svg)](https://galaxy.ansible.com/feelingsurf/fsviewer)
 
 

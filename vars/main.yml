@@ -5,6 +5,5 @@ fsviewer_deb_package: "https://github.com/feelingsurf/viewer/releases/download/{
 fsviewer_arch_map:
   aarch64: arm64
   amd64: amd64
-  armv6l: armv6
-  armv7l: armv6
+  armv7l: armv7l
   x86_64: amd64
